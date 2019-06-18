@@ -75,7 +75,10 @@ describe('Park', function() {
   });
 
   // Extensions
-  xit('should be able to remove all dinosaurs of a particular species');
+  it('should be able to remove all dinosaurs of a particular species', function () {
+    actual = park.removeAllDinosaursOfASpecies('oviraptor');
+    assert.strictEqual(actual, 6);
+  });
 
   it('should be able to provide a breakdown of dinosaur and types', function () {
     const actual = park.dinosaurBreakdown();

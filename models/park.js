@@ -51,16 +51,14 @@ Park.prototype.totalRevenueForYear = function () {
 }
 
 // Extensions
-Park.prototype.removeAllDinosaursOfASpecies = function () {
-  // dinosaurOfSpeciesList = [];
-  // for (let i = 0; i < this.dinosaurCollection.length; i++) {
-  //   if (this.dinosaurCollection[i].species === species) {
-  //     dinosaurOfSpeciesList.push(this.dinosaurCollection[i]);
-  //   }
-  // }
-  // Taxi.prototype.removePassengerByName = function (name) {
-  //   const indexToRemove = this.passengers.indexOf(name);
-  //   this.passengers.splice(indexToRemove, 1);
+Park.prototype.removeAllDinosaursOfASpecies = function (species) {
+  for (let i = 0; i < this.dinosaurCollection.length; i++) {
+    if (this.dinosaurCollection[i].species === species ) {
+      this.dinosaurCollection.splice(i, 1);
+      i--;
+    }
+  }
+  return this.dinosaurCollection.length;
 }
 
 Park.prototype.dinosaurBreakdown = function () {
