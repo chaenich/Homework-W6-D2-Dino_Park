@@ -77,6 +77,9 @@ describe('Park', function() {
   // Extensions
   xit('should be able to remove all dinosaurs of a particular species');
 
-  xit('should be able to provide a breakdown of dinosaur and types');
+  it('should be able to provide a breakdown of dinosaur and types', function () {
+    const actual = park.dinosaurBreakdown();
+    assert.deepStrictEqual(actual, { carnivore: 2, herbivore: 3, omnivore: 4 } );
+  });
 
 });
