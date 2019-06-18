@@ -5,14 +5,15 @@ const Dinosaur = require('../models/dinosaur.js');
 describe('Park', function() {
 
   beforeEach(function () {
+    // Total vistors: 505
     dino1 = new Dinosaur('t-rex', 'carnivore', 80);
     dino2 = new Dinosaur('oviraptor', 'omnivore', 40);
-    dino3 = new Dinosaur('ovirapt2', 'omnivore', 40);
+    dino3 = new Dinosaur('oviraptor', 'omnivore', 22);
     dino4 = new Dinosaur('diploduck', 'herbivore', 38);
-    dino5 = new Dinosaur('t-rexta', 'carnivore', 75);
+    dino5 = new Dinosaur('t-rex', 'carnivore', 75);
     dino6 = new Dinosaur('dimpledocus', 'herbivore', 52);
     dino7 = new Dinosaur('diploplum', 'herbivore', 120);
-    dino8 = new Dinosaur('oviraptorous', 'omnivore', 40);
+    dino8 = new Dinosaur('oviraptor', 'omnivore', 56);
     dino9 = new Dinosaur('ovirappper', 'omnivore', 22);
     dinoCollection = [ dino1, dino2, dino3, dino4, dino5, dino6, dino7, dino8, dino9 ];
     park = new Park('Dino Park', 10.00, dinoCollection);
@@ -37,24 +38,41 @@ describe('Park', function() {
     dino4 = new Dinosaur('heliraptor', 'herbivore', 35);
     park.addADinosaur(dino4);
     const actual = park.dinosaurCollection.length;
-    assert.deepStrictEqual(actual, 10);
+    assert.strictEqual(actual, 10);
   });
 
   it('should be able to remove a dinosaur from its collection', function () {
     park.removeADinosaur();
     const actual = park.dinosaurCollection.length;
-    assert.deepStrictEqual(actual, 8);
+    assert.strictEqual(actual, 8);
   });
 
-  xit('should be able to find the dinosaur that attracts the most visitors');
+  it('should be able to find the dinosaur that attracts the most visitors', function () {
+    const actual = park.findDinosaurMostVisitors();
+    assert.deepStrictEqual(actual.species, 'diploplum');
+  });
 
-  xit('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function () {
+    const actual = park.findAllDinosaursOfASpecies('oviraptor');
+    assert.deepStrictEqual(actual.length, 3);
+  });
 
-  xit('should be able to calculate total number of visitors per day');
+  it('should be able to calculate total number of visitors per day', function () {
+    const actual = park.totalVisitorsPerDay();
+    assert.strictEqual(actual, 505);
+  });
 
-  xit('should be able to calculate total number of visitors per year');
+  it('should be able to calculate total number of visitors per year', function () {
+  // Assuming this is daily visitors * 365 -> 184,325
+    const actual = park.totalVisitorsPerYear();
+    assert.strictEqual(actual, 184325);
+  });
 
-  xit('should be able to calculate total revenue for annual ticket sales');
+  it('should be able to calculate total revenue for annual ticket sales', function () {
+  // Assuming this is annual visitors (184,325) * entry price -> 1,843,250
+  const actual = park.totalRevenueForYear();
+  assert.strictEqual(actual, 1843250);
+  });
 
   // Extensions
   xit('should be able to remove all dinosaurs of a particular species');
