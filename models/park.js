@@ -32,4 +32,14 @@ Park.prototype.totalRevenueForYear = function () {
 
 }
 
+// Extensions
+Park.prototype.removeAllDinosaursOfASpecies = function () {
+
+}
+
+Park.prototype.dinosaurBreakdown = function () {
+
+}
+
+
 module.exports = Park;
